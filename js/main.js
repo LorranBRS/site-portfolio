@@ -301,6 +301,31 @@
   window.addEventListener("resize", progressoProcesso);
   progressoProcesso();
 
+  /* ---------- 8b. Sobre mim: grifo do título e números contando ---------- */
+  const sobre = document.getElementById("sobre");
+  const numeros = document.getElementById("about-numeros");
+  function contar(el) {
+    const alvo = Number(el.dataset.conta);
+    if (reduz || alvo === 0) { el.textContent = alvo; return; }
+    const ini = performance.now(), dur = 1100 + alvo * 60;
+    (function passo(t) {
+      const k = Math.min(1, (t - ini) / dur);
+      el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(passo);
+    })(ini);
+  }
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    sobre.classList.add("is-live");
+    obs.disconnect();
+  }, { threshold: 0.2 }).observe(sobre);
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    numeros.classList.add("is-live");
+    numeros.querySelectorAll("[data-conta]").forEach(contar);
+    obs.disconnect();
+  }, { threshold: 0.35 }).observe(numeros);
+
   /* ---------- 9. Painel de detalhes dos projetos ---------- */
   const PROJETOS = {
     workito: {

@@ -6,6 +6,22 @@
   <title>Lorran Rodrigues | Sistemas web</title>
   <meta name="description" content="Portfólio de Lorran Rodrigues: sistemas web para barbearias, técnicos, escolas e indústria, além de firmware para ESP32.">
   <meta name="theme-color" content="#2B3BFF">
+  <link rel="canonical" href="https://lorranbrs.github.io/site-portfolio/">
+  <!-- Prévia ao compartilhar o link (WhatsApp, LinkedIn, Telegram, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Lorran Rodrigues">
+  <meta property="og:title" content="Lorran Rodrigues | Sistemas web">
+  <meta property="og:description" content="Transformo papel, planilha e grupo de WhatsApp em sistema. Veja 8 projetos funcionando por dentro, do CRM Workito ao firmware de relógio.">
+  <meta property="og:url" content="https://lorranbrs.github.io/site-portfolio/">
+  <meta property="og:image" content="https://lorranbrs.github.io/site-portfolio/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Lorran Rodrigues, desenvolvedor de sistemas web, com miniaturas dos projetos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lorran Rodrigues | Sistemas web">
+  <meta name="twitter:description" content="Transformo papel, planilha e grupo de WhatsApp em sistema. Veja 8 projetos funcionando por dentro.">
+  <meta name="twitter:image" content="https://lorranbrs.github.io/site-portfolio/assets/og.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Crect x='8' y='8' width='7' height='16' fill='%23FFD23F'/%3E%3Crect x='17' y='17' width='7' height='7' fill='%23F4F6FF'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +38,7 @@
     </a>
     <nav aria-label="Seções">
       <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
       <a href="#processo">Processo</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -225,6 +242,35 @@
       </div>
     </section>
 
+    <!-- SOBRE MIM -->
+    <section class="about" id="sobre" aria-labelledby="about-title">
+      <div class="about-head">
+        <p class="about-kicker">Sobre mim</p>
+        <h2 id="about-title">Escrevo código para quem trabalha <em>longe do escritório.</em></h2>
+        <div class="about-selo" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="selo-circulo" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0"/></defs>
+            <text><textPath href="#selo-circulo" textLength="285" lengthAdjust="spacing">sistemas web · hardware · feito à mão ·</textPath></text>
+          </svg>
+          <span class="about-selo-centro"><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="about-body">
+        <div class="about-text">
+          <p>Sou o Lorran. Construo sistemas para quem passa o dia no balcão, na obra ou no almoxarifado: o barbeiro que precisa da agenda no celular, o técnico que fecha o relatório em cima da escada, o encarregado que controla EPI numa prancheta.</p>
+          <p>Gosto de entender o trabalho antes de abrir o editor. Por isso meus sistemas têm poucas telas, funcionam no 4G e entregam o documento que o cliente já pedia: PDF assinado, planilha, relatório.</p>
+          <p>Quando o problema sai da tela, eu vou junto. Programo ESP32, monto relógio com display e faço aparelho conversar por Bluetooth.</p>
+          <p class="about-agora"><b>Agora</b> Construindo o Workito, um CRM SaaS multiempresa em Next.js e PostgreSQL. 5 de 7 fases prontas.</p>
+        </div>
+        <ul class="about-numeros" id="about-numeros">
+          <li><b data-conta="8">8</b><span>sistemas neste portfólio</span></li>
+          <li><b data-conta="5">5</b><span>demonstrações no ar para testar agora</span></li>
+          <li><b data-conta="2">2</b><span>mundos: web e hardware com ESP32</span></li>
+          <li><b data-conta="0">0</b><span>frameworks neste site, tudo feito à mão</span></li>
+        </ul>
+      </div>
+    </section>
+
     <!-- PROCESSO -->
     <section class="process" id="processo" aria-labelledby="process-title">
       <div class="section-head">
@@ -284,8 +330,12 @@
     <!-- CONTATO -->
     <section class="contact" id="contato" aria-labelledby="contact-title">
       <h2 id="contact-title">Seu processo ainda vive no papel? Vamos virar sistema.</h2>
-      <p>Me chama no GitHub e conta o problema. Respondo com uma ideia de como resolver.</p>
-      <a class="btn btn-ink" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Falar comigo no GitHub</a>
+      <p>Me chama e conta o problema. Respondo com uma ideia de como resolver.</p>
+      <div class="contact-actions">
+        <a class="btn btn-ink" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Falar comigo no GitHub</a>
+        <!-- LinkedIn: trocar o href pelo link do perfil e apagar o atributo hidden -->
+        <a class="btn btn-ink-ghost" id="contato-linkedin" href="#" target="_blank" rel="noopener" hidden>Conectar no LinkedIn</a>
+      </div>
     </section>
   </main>
 
