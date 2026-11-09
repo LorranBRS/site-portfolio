@@ -139,7 +139,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: absolute; right: var(--gutter); bottom: clamp(48px, 8vh, 96px);
   font-size: .9rem; opacity: .7; writing-mode: vertical-rl; transform: rotate(180deg);
 }
-@media (hover: none) { .hero-hint { display: none; } }
+@media (hover: none), (max-width: 900px) { .hero-hint { display: none; } }
 
 /* ---------- Cabeçalho de seção ---------- */
 section { scroll-margin-top: 72px; }
