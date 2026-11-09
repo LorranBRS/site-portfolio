@@ -289,11 +289,20 @@
 
   /* ---------- 9. Painel de detalhes dos projetos ---------- */
   const PROJETOS = {
+    workito: {
+      tipo: "CRM SaaS multiempresa, em desenvolvimento", cor: "var(--menta)", titulo: "Workito",
+      problema: "Equipes comerciais perdem venda espalhando cliente, lead e proposta em planilha, WhatsApp e caderno, sem saber o que cada vendedor tem em aberto.",
+      recursos: ["Funil Kanban com arrastar e soltar, histórico de etapas e motivo de perda", "Leads com detecção de duplicados e conversão", "Propostas com desconto controlado, PDF e aprovação", "14 relatórios em CSV, Excel e PDF, com auditoria", "Dados de cada empresa isolados e cinco perfis de acesso"],
+      stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "shadcn/ui", "PostgreSQL", "Prisma", "Better Auth", "Vitest", "Docker"],
+      previa: "workito", url: "workito / dashboard",
+      demo: null, codigo: null, aviso: "Projeto privado, ainda em desenvolvimento. Posso mostrar ao vivo numa conversa.",
+    },
     barbearia: {
       tipo: "SaaS de agendamento", cor: "var(--girassol)", titulo: "Navalha, sistema de barbearia",
       problema: "Barbearias perdem horário e cliente marcando tudo por mensagem. O barbeiro corta cabelo e responde WhatsApp ao mesmo tempo.",
       recursos: ["Agenda do dia com uma coluna por barbeiro", "Visão semanal com clientes e faturamento por dia", "Encaixe de quem chega sem horário e fila da recepção", "Serviços e preço próprio por barbeiro", "Bloqueio de conflito de horário"],
       stack: ["React", "TypeScript", "Vite", "Tailwind", "shadcn/ui"],
+      previa: "navalha", url: "navalha / agenda",
       demo: "https://lorranbrs.github.io/sistema-de-barbearia-demo/", codigo: null,
     },
     relatoriotec: {
@@ -301,6 +310,7 @@
       problema: "Técnico tira foto no celular, anota medição no papel e monta o relatório à noite no computador.",
       recursos: ["Fotos antes e depois, com legenda", "Medições com modelos por tipo de serviço", "Assinatura do cliente na tela", "PDF enviado por WhatsApp ou e-mail", "Funciona sem internet e instala como app"],
       stack: ["HTML", "CSS", "JavaScript", "IndexedDB", "Service worker", "PWA"],
+      previa: "relatorio", url: "relatoriotec / novo relatório",
       demo: "https://lorranbrs.github.io/RelatorioTec/", codigo: "https://github.com/LorranBRS/RelatorioTec",
     },
     pmoc: {
@@ -308,6 +318,7 @@
       problema: "O Plano de Manutenção, Operação e Controle é obrigatório por lei, mas costuma virar uma planilha esquecida.",
       recursos: ["Checklist da Portaria MS 3.523/1998 pela periodicidade da visita", "Inventário de ambientes e equipamentos", "Medições de tensão, corrente, temperatura e pressão", "PDF com assinatura, compartilhado direto do celular"],
       stack: ["HTML", "CSS", "JavaScript", "jsPDF", "GitHub Pages"],
+      previa: "pmoc", url: "pmoc / nova visita",
       demo: "https://lorranbrs.github.io/PMOC/", codigo: "https://github.com/LorranBRS/PMOC",
     },
     crm: {
@@ -315,6 +326,7 @@
       problema: "Escolas perdem interessados entre o primeiro contato e a matrícula porque ninguém sabe em que etapa cada um está.",
       recursos: ["Funil de leads em kanban com arrastar e soltar", "Simulador de proposta com parcelamento e Tabela Price", "Alunos, cursos, turmas, professores e financeiro", "Perfis de diretor e funcionário com registro de tudo"],
       stack: ["HTML", "CSS", "JavaScript", "ViaCEP"],
+      previa: "crm", url: "crm-plus / painel",
       demo: "https://lorranbrs.github.io/CRM-Plus/", codigo: "https://github.com/LorranBRS/CRM-Plus",
     },
     epi: {
@@ -322,6 +334,7 @@
       problema: "Na montagem industrial, faltar luva ou óculos para a equipe para a obra. O controle era feito à mão numa planilha.",
       recursos: ["Entrada e saída com C.A, quem retirou e destino", "Saldo do mês e alerta de reposição", "Nota fiscal anexada às compras", "Planilha Excel e backup no Google Drive automáticos"],
       stack: ["HTML", "CSS", "JavaScript", "Excel", "Google Drive API"],
+      previa: "epi", url: "estoque-epi / estoque do mês",
       demo: "https://lorranbrs.github.io/controle-estoque-epi/", codigo: "https://github.com/LorranBRS/controle-estoque-epi",
     },
     albion: {
@@ -352,6 +365,16 @@
     $("detail-kind").textContent = p.tipo;
     $("detail-title").textContent = p.titulo;
     $("detail-problem").textContent = p.problema;
+    const fig = $("detail-preview");
+    fig.hidden = !p.previa;
+    if (p.previa) {
+      $("detail-url").textContent = p.url;
+      $("detail-img-parado").srcset = `assets/previas/${p.previa}-parado.webp`;
+      $("detail-img").src = `assets/previas/${p.previa}.webp`;
+      $("detail-img").alt = `Gravação da tela real do ${p.titulo} em uso.`;
+    } else {
+      $("detail-img").removeAttribute("src");
+    }
     $("detail-features").replaceChildren(...p.recursos.map((r) => Object.assign(document.createElement("li"), { textContent: r })));
     $("detail-stack").replaceChildren(...p.stack.map((s) => Object.assign(document.createElement("li"), { textContent: s })));
     const links = $("detail-links");
@@ -367,7 +390,7 @@
     if (!p.demo && !p.codigo) {
       const s = document.createElement("span");
       s.className = "privado";
-      s.textContent = "Projeto em repositório privado. Posso mostrar numa conversa.";
+      s.textContent = p.aviso || "Projeto em repositório privado. Posso mostrar numa conversa.";
       links.appendChild(s);
     }
     dialogo.showModal();
@@ -379,5 +402,5 @@
   });
   $("detail-close").addEventListener("click", () => dialogo.close());
   dialogo.addEventListener("click", (e) => { if (e.target === dialogo) dialogo.close(); });
-  dialogo.addEventListener("close", () => origem?.focus());
+  dialogo.addEventListener("close", () => { $("detail-img").removeAttribute("src"); origem?.focus(); });
 })();

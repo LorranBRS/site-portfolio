@@ -52,11 +52,38 @@
     <!-- PROJETOS -->
     <section class="work" id="projetos" aria-labelledby="work-title">
       <div class="section-head">
-        <h2 id="work-title">Sistemas que já estão rodando</h2>
-        <p>Cada quadro abaixo é uma miniatura viva do que o sistema faz. Clique para ver os detalhes e abrir a demo.</p>
+        <h2 id="work-title">Sistemas que eu construí</h2>
+        <p>Cada quadro é uma miniatura viva do que o sistema faz. Clique para ver o sistema por dentro, gravado da tela real.</p>
       </div>
 
       <div class="grid">
+        <!-- Workito: projeto principal -->
+        <article class="tile tile-workito span-6" data-project="workito">
+          <div class="workito-text">
+            <p class="workito-badge"><i aria-hidden="true"></i>Em desenvolvimento, 5 de 7 fases prontas</p>
+            <h3>Workito</h3>
+            <p class="workito-lead">CRM SaaS para equipes comerciais. Cada empresa tem seus dados isolados, cinco perfis de acesso e o caminho completo do lead até a proposta aprovada.</p>
+            <ul class="workito-feats">
+              <li>Funil de vendas com arrastar e soltar</li>
+              <li>Dashboard com metas e gráficos dos dados reais</li>
+              <li>Propostas com PDF e limite de desconto</li>
+              <li>14 relatórios em CSV, Excel e PDF</li>
+            </ul>
+            <ul class="workito-stack" aria-label="Tecnologias">
+              <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li>
+            </ul>
+          </div>
+          <figure class="browser workito-shot">
+            <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em>workito / dashboard</em></div>
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcset="assets/previas/workito-parado.webp">
+              <img src="assets/previas/workito.webp" width="900" height="563" loading="lazy" decoding="async"
+                   alt="Gravação do Workito: dashboard com indicadores, cartão arrastado no funil de vendas, lista de clientes, propostas e relatórios.">
+            </picture>
+          </figure>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do Workito"></button>
+        </article>
+
         <!-- Barbearia -->
         <article class="tile tile-barber span-4" data-project="barbearia">
           <div class="mini mini-agenda" aria-hidden="true">
@@ -266,6 +293,14 @@
       </button>
       <p class="detail-kind" id="detail-kind"></p>
       <h2 id="detail-title"></h2>
+      <figure class="browser detail-preview" id="detail-preview" hidden>
+        <div class="browser-bar" aria-hidden="true"><span></span><span></span><span></span><em id="detail-url"></em></div>
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" id="detail-img-parado">
+          <img id="detail-img" width="760" height="475" decoding="async" alt="">
+        </picture>
+        <figcaption>Gravação da tela real do sistema.</figcaption>
+      </figure>
       <div class="detail-body">
         <div>
           <h3>O problema</h3>

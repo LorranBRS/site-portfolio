@@ -157,6 +157,7 @@ section { scroll-margin-top: 72px; }
 .span-2 { grid-column: span 2; }
 .span-3 { grid-column: span 3; }
 .span-4 { grid-column: span 4; }
+.span-6 { grid-column: 1 / -1; }
 
 .tile {
   position: relative;
@@ -190,6 +191,7 @@ section { scroll-margin-top: 72px; }
 }
 .tile:has(.tile-open:focus-visible)::after { opacity: 1; transform: none; }
 
+.tile-workito { --c-bg: #0B3B40; --c-fg: var(--papel); }
 .tile-barber { --c-bg: var(--tinta); --c-fg: var(--papel); min-height: 460px; }
 .tile-report { --c-bg: var(--menta); --c-fg: var(--tinta); min-height: 460px; }
 .tile-pmoc   { --c-bg: var(--girassol); --c-fg: var(--tinta); }
@@ -197,6 +199,48 @@ section { scroll-margin-top: 72px; }
 .tile-epi    { --c-bg: #fff; --c-fg: var(--tinta); box-shadow: inset 0 0 0 2px var(--linha); }
 .tile-albion { --c-bg: #121A55; --c-fg: var(--papel); }
 .tile-watch  { --c-bg: var(--coral); --c-fg: var(--tinta); }
+
+.tile:is([data-project=workito], [data-project=barbearia], [data-project=relatoriotec], [data-project=pmoc], [data-project=crm], [data-project=epi])::after { content: "Ver por dentro"; }
+
+/* ---------- Workito (projeto principal) ---------- */
+.tile-workito {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(20px, 3vw, 44px);
+  align-items: center; min-height: 0; padding: clamp(22px, 3vw, 44px);
+}
+.workito-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  font-size: .88rem; font-weight: 600; color: var(--menta);
+  background: rgba(46, 230, 168, .12); padding: 5px 12px; border-radius: 999px;
+}
+.workito-badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--menta); animation: pulso 2s ease-in-out infinite; }
+@keyframes pulso { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.tile-workito h3 {
+  font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 800; letter-spacing: -0.035em; line-height: .95;
+  font-variation-settings: "wdth" 85, "opsz" 96; margin-bottom: 14px;
+}
+.workito-lead { font-size: 1.08rem; line-height: 1.55; opacity: .88; max-width: 44ch; margin-bottom: 18px; }
+.workito-feats { display: grid; gap: 7px; margin-bottom: 20px; }
+.workito-feats li { position: relative; padding-left: 20px; font-size: .97rem; }
+.workito-feats li::before { content: ""; position: absolute; left: 0; top: .55em; width: 9px; height: 9px; border-radius: 3px; background: var(--menta); }
+.workito-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.workito-stack li { font-size: .8rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(244, 246, 255, .25); }
+.workito-shot { transform: rotate(.6deg); transition: transform .3s var(--ease-out); }
+@media (hover: hover) { .tile-workito:hover .workito-shot { transform: rotate(0) scale(1.01); } }
+
+/* Moldura de navegador das prévias */
+.browser {
+  margin: 0; border-radius: 12px; overflow: hidden; background: #fff;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .08);
+}
+.browser-bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #E8EBF5; }
+.browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+.browser-bar span:nth-child(2) { background: var(--girassol); }
+.browser-bar span:nth-child(3) { background: var(--menta); }
+.browser-bar em {
+  margin-left: 10px; flex: 1; max-width: 300px; font-style: normal; font-size: .72rem; color: rgba(11, 18, 64, .6);
+  background: #fff; border-radius: 6px; padding: 2px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; background: #F1F3F8; }
 
 /* As miniaturas só animam quando .is-live (visível na tela) */
 .mini *:not(.chip) { animation-play-state: paused; }
@@ -460,7 +504,7 @@ section { scroll-margin-top: 72px; }
 
 /* ---------- Painel de detalhes ---------- */
 .detail {
-  width: min(720px, calc(100% - 32px)); max-height: calc(100svh - 48px);
+  width: min(880px, calc(100% - 32px)); max-height: calc(100svh - 32px);
   padding: 0; border: 0; border-radius: var(--raio-g);
   background: var(--papel); color: var(--tinta);
   box-shadow: 0 40px 80px -20px rgba(11, 18, 64, .55);
@@ -481,6 +525,9 @@ section { scroll-margin-top: 72px; }
 @media (hover: hover) { .detail-close:hover { background: rgba(11, 18, 64, .14); } }
 .detail-kind { font-weight: 600; opacity: .65; margin-bottom: 6px; padding-right: 48px; }
 .detail h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 22px; }
+.detail-preview { margin-bottom: 24px; box-shadow: 0 18px 40px -20px rgba(11, 18, 64, .5), 0 0 0 1px var(--linha); }
+.detail-preview[hidden] { display: none; }
+.detail-preview figcaption { font-size: .82rem; padding: 7px 12px; color: rgba(11, 18, 64, .6); background: #E8EBF5; }
 .detail-body { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
 .detail-body h3 { font-size: 1.1rem; margin-bottom: 8px; }
 .detail-body p, .detail-body li { font-size: 1rem; line-height: 1.55; }
@@ -497,14 +544,16 @@ section { scroll-margin-top: 72px; }
 /* ---------- Responsivo ---------- */
 @media (max-width: 1080px) {
   .grid { grid-template-columns: repeat(4, 1fr); }
+  .tile-workito { grid-template-columns: 1fr; }
   .span-4 { grid-column: span 4; }
+.span-6 { grid-column: 1 / -1; }
   .span-3 { grid-column: span 2; }
   .tile-report { grid-column: span 2; }
   .tool-groups { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
   .grid { grid-template-columns: 1fr; }
-  .span-2, .span-3, .span-4, .tile-report { grid-column: auto; }
+  .span-2, .span-3, .span-4, .span-6, .tile-report { grid-column: auto; }
   .tile, .tile-barber, .tile-report { min-height: 0; }
   .steps { grid-template-columns: 1fr; padding-top: 0; padding-left: 60px; gap: 32px; }
   .steps-track { left: 18px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }
@@ -531,6 +580,7 @@ section { scroll-margin-top: 72px; }
   .ring .ring-fill { animation: none !important; stroke-dashoffset: 0; }
   .mini-check li i::after { animation: none !important; opacity: 1; transform: none; }
   .kb-card { animation: none !important; }
+  .workito-badge i { animation: none !important; }
   .bar i { animation: none !important; }
   .chart-line { animation: none !important; stroke-dashoffset: 0; }
   .chart-area, .chart-forecast { animation: none !important; opacity: 1; }
