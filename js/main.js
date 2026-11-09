@@ -309,7 +309,7 @@
       recursos: ["Funil Kanban com arrastar e soltar, histórico de etapas e motivo de perda", "Leads com detecção de duplicados e conversão", "Propostas com desconto controlado, PDF e aprovação", "14 relatórios em CSV, Excel e PDF, com auditoria", "Dados de cada empresa isolados e cinco perfis de acesso"],
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "shadcn/ui", "PostgreSQL", "Prisma", "Better Auth", "Vitest", "Docker"],
       previa: "workito", url: "workito / dashboard",
-      demo: null, codigo: null, aviso: "Projeto privado, ainda em desenvolvimento. Posso mostrar ao vivo numa conversa.",
+      demo: null, aviso: "Projeto privado, ainda em desenvolvimento. Posso mostrar ao vivo numa conversa.",
     },
     barbearia: {
       tipo: "SaaS de agendamento", cor: "var(--girassol)", titulo: "Navalha, sistema de barbearia",
@@ -317,7 +317,7 @@
       recursos: ["Agenda do dia com uma coluna por barbeiro", "Visão semanal com clientes e faturamento por dia", "Encaixe de quem chega sem horário e fila da recepção", "Serviços e preço próprio por barbeiro", "Bloqueio de conflito de horário"],
       stack: ["React", "TypeScript", "Vite", "Tailwind", "shadcn/ui"],
       previa: "navalha", url: "navalha / agenda",
-      demo: "https://lorranbrs.github.io/sistema-de-barbearia-demo/", codigo: null,
+      demo: "https://lorranbrs.github.io/sistema-de-barbearia-demo/",
     },
     relatoriotec: {
       tipo: "Ferramenta de campo", cor: "var(--menta)", titulo: "RelatorioTec",
@@ -325,7 +325,7 @@
       recursos: ["Fotos antes e depois, com legenda", "Medições com modelos por tipo de serviço", "Assinatura do cliente na tela", "PDF enviado por WhatsApp ou e-mail", "Funciona sem internet e instala como app"],
       stack: ["HTML", "CSS", "JavaScript", "IndexedDB", "Service worker", "PWA"],
       previa: "relatorio", url: "relatoriotec / novo relatório",
-      demo: "https://lorranbrs.github.io/RelatorioTec/", codigo: "https://github.com/LorranBRS/RelatorioTec",
+      demo: "https://lorranbrs.github.io/RelatorioTec/",
     },
     pmoc: {
       tipo: "Manutenção de ar-condicionado", cor: "var(--girassol)", titulo: "PMOC",
@@ -333,7 +333,7 @@
       recursos: ["Checklist da Portaria MS 3.523/1998 pela periodicidade da visita", "Inventário de ambientes e equipamentos", "Medições de tensão, corrente, temperatura e pressão", "PDF com assinatura, compartilhado direto do celular"],
       stack: ["HTML", "CSS", "JavaScript", "jsPDF", "GitHub Pages"],
       previa: "pmoc", url: "pmoc / nova visita",
-      demo: "https://lorranbrs.github.io/PMOC/", codigo: "https://github.com/LorranBRS/PMOC",
+      demo: "https://lorranbrs.github.io/PMOC/",
     },
     crm: {
       tipo: "CRM para educação", cor: "var(--cobalto)", titulo: "CRM Plus",
@@ -341,7 +341,7 @@
       recursos: ["Funil de leads em kanban com arrastar e soltar", "Simulador de proposta com parcelamento e Tabela Price", "Alunos, cursos, turmas, professores e financeiro", "Perfis de diretor e funcionário com registro de tudo"],
       stack: ["HTML", "CSS", "JavaScript", "ViaCEP"],
       previa: "crm", url: "crm-plus / painel",
-      demo: "https://lorranbrs.github.io/CRM-Plus/", codigo: "https://github.com/LorranBRS/CRM-Plus",
+      demo: "https://lorranbrs.github.io/CRM-Plus/",
     },
     epi: {
       tipo: "Controle de estoque industrial", cor: "var(--coral)", titulo: "Estoque de EPI",
@@ -349,21 +349,21 @@
       recursos: ["Entrada e saída com C.A, quem retirou e destino", "Saldo do mês e alerta de reposição", "Nota fiscal anexada às compras", "Planilha Excel e backup no Google Drive automáticos"],
       stack: ["HTML", "CSS", "JavaScript", "Excel", "Google Drive API"],
       previa: "epi", url: "estoque-epi / estoque do mês",
-      demo: "https://lorranbrs.github.io/controle-estoque-epi/", codigo: "https://github.com/LorranBRS/controle-estoque-epi",
+      demo: "https://lorranbrs.github.io/controle-estoque-epi/",
     },
     albion: {
       tipo: "Análise de dados", cor: "var(--menta)", titulo: "Albion em Alta",
       problema: "No mercado do Albion Online, o preço muda por cidade e por hora. Sem dados, comprar e vender vira chute.",
       recursos: ["Coletor ligado 24h recebendo ordens em tempo real", "Rankings: em alta, mais vendidos, preço subindo e caindo", "Previsão de preço com regressão e Holt-Winters", "Limpeza de picos fora do padrão"],
       stack: ["Python", "SQLite", "NATS", "API JSON", "JavaScript"],
-      demo: null, codigo: null,
+      demo: null,
     },
     watch: {
       tipo: "Firmware embarcado", cor: "var(--coral)", titulo: "LorranWatch",
       problema: "Ir além do navegador: um relógio inteligente feito do zero numa placa ESP32-S3 com tela AMOLED.",
       recursos: ["Mostradores clássico, analógico, digital e minimalista", "Notificações e chamadas do celular por Bluetooth", "Passos, sono, despertador, timer e cronômetro", "Controle do ar-condicionado via ESP-NOW"],
       stack: ["C++", "Arduino", "ESP32-S3", "LVGL 9", "Bluetooth", "ESP-NOW"],
-      demo: null, codigo: null,
+      demo: null,
     },
   };
 
@@ -400,8 +400,7 @@
       links.appendChild(a);
     };
     if (p.demo) link(p.demo, "Abrir a demo", "btn-ink");
-    if (p.codigo) link(p.codigo, "Ver o código", "btn-ghost-ink");
-    if (!p.demo && !p.codigo) {
+    if (!p.demo) {
       const s = document.createElement("span");
       s.className = "privado";
       s.textContent = p.aviso || "Projeto em repositório privado. Posso mostrar numa conversa.";

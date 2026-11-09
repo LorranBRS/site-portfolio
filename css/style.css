@@ -548,8 +548,6 @@ section { scroll-margin-top: 72px; }
 .detail-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 .detail-stack li { background: #fff; border: 1px solid var(--linha); padding: 4px 12px; border-radius: 999px; font-size: .9rem; font-weight: 500; }
 .detail-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.detail-links .btn-ghost-ink { border: 2px solid var(--tinta); color: var(--tinta); }
-@media (hover: hover) { .detail-links .btn-ghost-ink:hover { background: var(--tinta); color: var(--papel); } }
 .detail-links .privado { font-size: .95rem; opacity: .7; }
 
 /* ---------- Responsivo ---------- */
