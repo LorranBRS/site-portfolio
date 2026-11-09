@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lorran Rodrigues | Sistemas web</title>
+  <meta name="description" content="Portfólio de Lorran Rodrigues: sistemas web para barbearias, técnicos, escolas e indústria, além de firmware para ESP32.">
+  <meta name="theme-color" content="#2B3BFF">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B3BFF'/%3E%3Crect x='8' y='8' width='7' height='16' fill='%23FFD23F'/%3E%3Crect x='17' y='17' width='7' height='7' fill='%23F4F6FF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#projetos">Pular para os projetos</a>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#inicio" aria-label="Lorran Rodrigues, voltar ao início">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+      <span>Lorran</span>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERÓI -->
+    <section class="hero" id="inicio">
+      <canvas class="hero-canvas" id="pixels" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="hero-role">Desenvolvedor de sistemas web, do protótipo ao deploy</p>
+        <h1 class="hero-name" id="hero-name" aria-label="Lorran Rodrigues">
+          <span class="line" data-split>Lorran</span>
+          <span class="line" data-split>Rodrigues</span>
+        </h1>
+        <p class="hero-lead">
+          Eu transformo papel, planilha e grupo de WhatsApp em sistema: agenda de barbearia,
+          relatório técnico com assinatura, estoque de EPI, CRM de escola e até firmware de relógio.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-sun" href="#projetos">Ver projetos</a>
+          <a class="btn btn-ghost" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Abrir meu GitHub</a>
+        </div>
+      </div>
+      <p class="hero-hint" aria-hidden="true">Passe o mouse no nome</p>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="work" id="projetos" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Sistemas que já estão rodando</h2>
+        <p>Cada quadro abaixo é uma miniatura viva do que o sistema faz. Clique para ver os detalhes e abrir a demo.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Barbearia -->
+        <article class="tile tile-barber span-4" data-project="barbearia">
+          <div class="mini mini-agenda" aria-hidden="true">
+            <div class="agenda-top">
+              <span>Agenda de sábado</span>
+              <span class="agenda-count"><b id="agenda-count">7</b> horários marcados</span>
+            </div>
+            <div class="agenda" id="agenda"></div>
+            <div class="agenda-toast" id="agenda-toast"></div>
+          </div>
+          <div class="tile-text">
+            <h3>Navalha</h3>
+            <p>SaaS de agendamento para barbearias: agenda por barbeiro, encaixe, fila da recepção e faturamento do dia.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do Navalha"></button>
+        </article>
+
+        <!-- RelatorioTec -->
+        <article class="tile tile-report span-2" data-project="relatoriotec">
+          <div class="mini mini-doc" aria-hidden="true">
+            <div class="sheet">
+              <div class="sheet-head"><span></span><span></span></div>
+              <div class="doc-line" style="--w:.9;--d:0s"></div>
+              <div class="doc-line" style="--w:.7;--d:.25s"></div>
+              <div class="doc-photos"><i></i><i></i><i></i></div>
+              <div class="doc-line" style="--w:.8;--d:.9s"></div>
+              <svg class="doc-sign" viewBox="0 0 120 34"><path d="M4 24c10-18 16-18 14-4s8-14 14-10-2 16 6 10 10-14 16-8 4 12 12 6 14-10 20-6 12 6 24 2"/></svg>
+              <span class="doc-stamp">PDF pronto</span>
+            </div>
+          </div>
+          <div class="tile-text">
+            <h3>RelatorioTec</h3>
+            <p>Relatório técnico com fotos, medições e assinatura, enviado por WhatsApp.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do RelatorioTec"></button>
+        </article>
+
+        <!-- PMOC -->
+        <article class="tile tile-pmoc span-2" data-project="pmoc">
+          <div class="mini mini-check" aria-hidden="true">
+            <svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/><circle class="ring-fill" cx="22" cy="22" r="18"/></svg>
+            <ul>
+              <li style="--d:0"><i></i>Filtros limpos</li>
+              <li style="--d:1"><i></i>Dreno desobstruído</li>
+              <li style="--d:2"><i></i>Pressão medida</li>
+              <li style="--d:3"><i></i>Corrente conferida</li>
+            </ul>
+          </div>
+          <div class="tile-text">
+            <h3>PMOC</h3>
+            <p>O técnico preenche a visita no celular e sai com o PDF do plano de manutenção.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do PMOC"></button>
+        </article>
+
+        <!-- CRM -->
+        <article class="tile tile-crm span-2" data-project="crm">
+          <div class="mini mini-kanban" aria-hidden="true">
+            <div class="kb-cols">
+              <div class="kb-col"><span>Interessado</span><i></i><i></i></div>
+              <div class="kb-col"><span>Visita</span><i></i></div>
+              <div class="kb-col"><span>Matrícula</span><i></i><i></i></div>
+            </div>
+            <div class="kb-card">Ana Souza<small>Técnico em TI</small></div>
+          </div>
+          <div class="tile-text">
+            <h3>CRM Plus</h3>
+            <p>Funil de matrículas para escolas: do primeiro contato ao aluno matriculado.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do CRM Plus"></button>
+        </article>
+
+        <!-- EPI -->
+        <article class="tile tile-epi span-2" data-project="epi">
+          <div class="mini mini-bars" aria-hidden="true">
+            <div class="bars">
+              <div class="bar" style="--h:.82"><i></i><span>Luva</span></div>
+              <div class="bar" style="--h:.64"><i></i><span>Capacete</span></div>
+              <div class="bar bar-low" style="--h:.7"><i></i><span>Óculos</span></div>
+              <div class="bar" style="--h:.9"><i></i><span>Bota</span></div>
+            </div>
+            <span class="bars-alert">Repor óculos</span>
+          </div>
+          <div class="tile-text">
+            <h3>Estoque de EPI</h3>
+            <p>Entrada, saída, nota fiscal e planilha Excel automática para uma montagem industrial.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do Estoque de EPI"></button>
+        </article>
+
+        <!-- Albion -->
+        <article class="tile tile-albion span-3" data-project="albion">
+          <div class="mini mini-chart" aria-hidden="true">
+            <div class="chart-top">
+              <span>Couro curtido T6</span>
+              <b><span id="price">4.812</span> prata</b>
+              <em id="trend">+12,4%</em>
+            </div>
+            <svg class="chart" viewBox="0 0 330 110">
+              <path class="chart-area" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14 L300 110 L0 110Z"/>
+              <path class="chart-line" pathLength="1" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14"/>
+              <path class="chart-forecast" d="M300 14 L325 6"/>
+            </svg>
+          </div>
+          <div class="tile-text">
+            <h3>Albion em Alta</h3>
+            <p>Coletor 24h, rankings e previsão de preço do mercado do Albion Online.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do Albion em Alta"></button>
+        </article>
+
+        <!-- LorranWatch -->
+        <article class="tile tile-watch span-3" data-project="watch">
+          <div class="mini mini-watch" aria-hidden="true">
+            <div class="watch">
+              <div class="watch-ring" id="watch-ring"></div>
+              <div class="watch-face">
+                <b id="watch-time">12:00</b>
+                <span id="watch-date">sáb, 9 nov</span>
+                <small><i></i>6.284 passos</small>
+              </div>
+            </div>
+          </div>
+          <div class="tile-text">
+            <h3>LorranWatch</h3>
+            <p>Firmware de smartwatch para ESP32-S3 com tela AMOLED, em Arduino e LVGL 9.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do LorranWatch"></button>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="process" id="processo" aria-labelledby="process-title">
+      <div class="section-head">
+        <h2 id="process-title">Como um sistema sai do papel</h2>
+        <p>O mesmo caminho que segui na barbearia, no PMOC e no estoque de EPI.</p>
+      </div>
+      <ol class="steps" id="steps">
+        <li class="step">
+          <span class="step-n">1</span>
+          <h3>Escuto quem vai usar</h3>
+          <p>Vou até o balcão, a obra ou a planilha. O sistema nasce do trabalho real, não de uma tela bonita.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">2</span>
+          <h3>Mostro um protótipo navegável</h3>
+          <p>Em poucos dias você clica numa versão que já parece o produto e diz o que falta.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">3</span>
+          <h3>Construo e testo no celular</h3>
+          <p>Telas rápidas, que funcionam no 4G do técnico e geram PDF, gráfico e alerta na hora.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">4</span>
+          <h3>Publico e acompanho</h3>
+          <p>O sistema vai para o ar com link próprio, e eu ajusto conforme o uso de verdade.</p>
+        </li>
+        <span class="steps-track" aria-hidden="true"><span class="steps-fill" id="steps-fill"></span></span>
+      </ol>
+    </section>
+
+    <!-- FERRAMENTAS -->
+    <section class="tools" aria-labelledby="tools-title">
+      <div class="section-head">
+        <h2 id="tools-title">Com o que eu trabalho</h2>
+      </div>
+      <div class="tool-groups">
+        <div class="tool-group" style="--c: var(--cobalto)">
+          <h3>Web</h3>
+          <ul><li>HTML e CSS</li><li>JavaScript e TypeScript</li><li>React e Vite</li><li>Tailwind</li><li>PWA offline</li></ul>
+        </div>
+        <div class="tool-group" style="--c: var(--coral)">
+          <h3>Dados</h3>
+          <ul><li>Python</li><li>SQLite</li><li>APIs e tempo real</li><li>Previsão de séries</li></ul>
+        </div>
+        <div class="tool-group" style="--c: var(--menta-escura)">
+          <h3>Documentos</h3>
+          <ul><li>PDF gerado no navegador</li><li>Assinatura na tela</li><li>Envio por WhatsApp</li></ul>
+        </div>
+        <div class="tool-group" style="--c: var(--girassol-escuro)">
+          <h3>Hardware</h3>
+          <ul><li>ESP32 e ESP32-S3</li><li>Arduino e C++</li><li>LVGL 9</li><li>Bluetooth e ESP-NOW</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact" id="contato" aria-labelledby="contact-title">
+      <h2 id="contact-title">Seu processo ainda vive no papel? Vamos virar sistema.</h2>
+      <p>Me chama no GitHub e conta o problema. Respondo com uma ideia de como resolver.</p>
+      <a class="btn btn-ink" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Falar comigo no GitHub</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Lorran Rodrigues. Feito à mão em HTML, CSS e JavaScript, sem framework.</p>
+    <a href="#inicio">Voltar ao topo</a>
+  </footer>
+
+  <!-- Painel de detalhes do projeto -->
+  <dialog class="detail" id="detail" aria-labelledby="detail-title">
+    <div class="detail-inner">
+      <button class="detail-close" type="button" id="detail-close" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p class="detail-kind" id="detail-kind"></p>
+      <h2 id="detail-title"></h2>
+      <div class="detail-body">
+        <div>
+          <h3>O problema</h3>
+          <p id="detail-problem"></p>
+        </div>
+        <div>
+          <h3>O que o sistema faz</h3>
+          <ul id="detail-features"></ul>
+        </div>
+      </div>
+      <ul class="detail-stack" id="detail-stack" aria-label="Tecnologias"></ul>
+      <div class="detail-links" id="detail-links"></div>
+    </div>
+  </dialog>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
