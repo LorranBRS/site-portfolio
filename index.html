@@ -58,7 +58,7 @@
 
       <div class="grid">
         <!-- Workito: projeto principal -->
-        <article class="tile tile-workito span-6" data-project="workito">
+        <article class="tile tile-workito" data-project="workito">
           <div class="workito-text">
             <p class="workito-badge"><i aria-hidden="true"></i>Em desenvolvimento, 5 de 7 fases prontas</p>
             <h3>Workito</h3>
@@ -85,13 +85,20 @@
         </article>
 
         <!-- Barbearia -->
-        <article class="tile tile-barber span-4" data-project="barbearia">
+        <article class="tile tile-barber" data-project="barbearia">
           <div class="mini mini-agenda" aria-hidden="true">
             <div class="agenda-top">
               <span>Agenda de sábado</span>
-              <span class="agenda-count"><b id="agenda-count">7</b> horários marcados</span>
+              <span class="agenda-count"><b id="agenda-count">9</b> de 20 horários marcados</span>
             </div>
-            <div class="agenda" id="agenda"></div>
+            <div class="agenda-body">
+              <div class="agenda" id="agenda"></div>
+              <aside class="agenda-side">
+                <div><span>Clientes hoje</span><b id="agenda-clientes">7</b></div>
+                <div><span>Faturamento previsto</span><b id="agenda-fat">R$ 315</b></div>
+                <div><span>Próximo</span><b id="agenda-prox">09:00 Rafa</b></div>
+              </aside>
+            </div>
             <div class="agenda-toast" id="agenda-toast"></div>
           </div>
           <div class="tile-text">
@@ -102,7 +109,7 @@
         </article>
 
         <!-- RelatorioTec -->
-        <article class="tile tile-report span-2" data-project="relatoriotec">
+        <article class="tile tile-report" data-project="relatoriotec">
           <div class="mini mini-doc" aria-hidden="true">
             <div class="sheet">
               <div class="sheet-head"><span></span><span></span></div>
@@ -122,7 +129,7 @@
         </article>
 
         <!-- PMOC -->
-        <article class="tile tile-pmoc span-2" data-project="pmoc">
+        <article class="tile tile-pmoc" data-project="pmoc">
           <div class="mini mini-check" aria-hidden="true">
             <svg class="ring" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18"/><circle class="ring-fill" cx="22" cy="22" r="18"/></svg>
             <ul>
@@ -140,7 +147,7 @@
         </article>
 
         <!-- CRM -->
-        <article class="tile tile-crm span-2" data-project="crm">
+        <article class="tile tile-crm" data-project="crm">
           <div class="mini mini-kanban" aria-hidden="true">
             <div class="kb-cols">
               <div class="kb-col"><span>Interessado</span><i></i><i></i></div>
@@ -157,7 +164,7 @@
         </article>
 
         <!-- EPI -->
-        <article class="tile tile-epi span-2" data-project="epi">
+        <article class="tile tile-epi" data-project="epi">
           <div class="mini mini-bars" aria-hidden="true">
             <div class="bars">
               <div class="bar" style="--h:.82"><i></i><span>Luva</span></div>
@@ -174,29 +181,8 @@
           <button class="tile-open" type="button" aria-label="Ver detalhes do Estoque de EPI"></button>
         </article>
 
-        <!-- Albion -->
-        <article class="tile tile-albion span-3" data-project="albion">
-          <div class="mini mini-chart" aria-hidden="true">
-            <div class="chart-top">
-              <span>Couro curtido T6</span>
-              <b><span id="price">4.812</span> prata</b>
-              <em id="trend">+12,4%</em>
-            </div>
-            <svg class="chart" viewBox="0 0 330 110">
-              <path class="chart-area" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14 L300 110 L0 110Z"/>
-              <path class="chart-line" pathLength="1" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14"/>
-              <path class="chart-forecast" d="M300 14 L325 6"/>
-            </svg>
-          </div>
-          <div class="tile-text">
-            <h3>Albion em Alta</h3>
-            <p>Coletor 24h, rankings e previsão de preço do mercado do Albion Online.</p>
-          </div>
-          <button class="tile-open" type="button" aria-label="Ver detalhes do Albion em Alta"></button>
-        </article>
-
         <!-- LorranWatch -->
-        <article class="tile tile-watch span-3" data-project="watch">
+        <article class="tile tile-watch" data-project="watch">
           <div class="mini mini-watch" aria-hidden="true">
             <div class="watch">
               <div class="watch-ring" id="watch-ring"></div>
@@ -213,6 +199,29 @@
           </div>
           <button class="tile-open" type="button" aria-label="Ver detalhes do LorranWatch"></button>
         </article>
+        <!-- Albion -->
+        <article class="tile tile-albion" data-project="albion">
+          <div class="mini mini-chart" aria-hidden="true">
+            <div class="chart-top">
+              <span>Couro curtido T6</span>
+              <b><span id="price">4.812</span> prata</b>
+              <em id="trend">+12,4%</em>
+            </div>
+            <div class="chart-wrap">
+            <svg class="chart" viewBox="0 0 330 110" preserveAspectRatio="none">
+              <path class="chart-area" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14 L300 110 L0 110Z"/>
+              <path class="chart-line" pathLength="1" d="M0 92 L25 86 L50 90 L75 70 L100 76 L125 58 L150 64 L175 44 L200 52 L225 30 L250 38 L275 20 L300 14"/>
+              <path class="chart-forecast" d="M300 14 L325 6"/>
+            </svg>
+            </div>
+          </div>
+          <div class="tile-text">
+            <h3>Albion em Alta</h3>
+            <p>Coletor ligado 24h, rankings dos itens em alta e previsão de preço do mercado do Albion Online, com dados abertos.</p>
+          </div>
+          <button class="tile-open" type="button" aria-label="Ver detalhes do Albion em Alta"></button>
+        </article>
+
       </div>
     </section>
 

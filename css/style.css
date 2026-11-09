@@ -20,7 +20,7 @@
   --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
   --texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --gutter: clamp(16px, 4vw, 56px);
+  --gutter: clamp(16px, 2.4vw, 40px);
   --raio-g: 22px;
   --raio-p: 10px;
 }
@@ -110,7 +110,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   overflow: hidden;
 }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
-.hero-inner { max-width: 1280px; width: 100%; }
+.hero-inner { width: 100%; }
 .hero-role { font-size: clamp(1rem, 1.6vw, 1.2rem); font-weight: 500; opacity: .85; margin-bottom: 12px; }
 .hero-name {
   font-size: clamp(3.6rem, 15.5vw, 14.5rem);
@@ -152,12 +152,13 @@ section { scroll-margin-top: 72px; }
 .section-head p { font-size: 1.1rem; max-width: 56ch; opacity: .8; }
 
 /* ---------- Projetos ---------- */
-.work { padding: clamp(72px, 10vw, 140px) var(--gutter); max-width: 1440px; margin: 0 auto; }
-.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(14px, 1.6vw, 22px); }
-.span-2 { grid-column: span 2; }
-.span-3 { grid-column: span 3; }
-.span-4 { grid-column: span 4; }
-.span-6 { grid-column: 1 / -1; }
+.work { padding: clamp(72px, 9vw, 130px) var(--gutter); }
+/* Grade de 12 colunas, de ponta a ponta da tela */
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(12px, 1.2vw, 20px); }
+.tile-workito, .tile-albion { grid-column: 1 / -1; }
+.tile-barber { grid-column: span 6; }
+.tile-report, .tile-pmoc { grid-column: span 3; }
+.tile-crm, .tile-epi, .tile-watch { grid-column: span 4; }
 
 .tile {
   position: relative;
@@ -192,12 +193,16 @@ section { scroll-margin-top: 72px; }
 .tile:has(.tile-open:focus-visible)::after { opacity: 1; transform: none; }
 
 .tile-workito { --c-bg: #0B3B40; --c-fg: var(--papel); }
-.tile-barber { --c-bg: var(--tinta); --c-fg: var(--papel); min-height: 460px; }
-.tile-report { --c-bg: var(--menta); --c-fg: var(--tinta); min-height: 460px; }
+.tile-barber { --c-bg: var(--tinta); --c-fg: var(--papel); }
+.tile-report { --c-bg: var(--menta); --c-fg: var(--tinta); }
 .tile-pmoc   { --c-bg: var(--girassol); --c-fg: var(--tinta); }
 .tile-crm    { --c-bg: var(--cobalto); --c-fg: var(--papel); }
 .tile-epi    { --c-bg: #fff; --c-fg: var(--tinta); box-shadow: inset 0 0 0 2px var(--linha); }
-.tile-albion { --c-bg: #121A55; --c-fg: var(--papel); }
+.tile-albion { --c-bg: #121A55; --c-fg: var(--papel);
+  display: grid; grid-template-columns: minmax(240px, 4fr) minmax(0, 8fr); gap: clamp(20px, 3vw, 48px); align-items: end; min-height: 0;
+}
+.tile-albion .tile-text { order: -1; align-self: end; }
+.tile-albion .mini { margin-bottom: 0; min-height: 0; }
 .tile-watch  { --c-bg: var(--coral); --c-fg: var(--tinta); }
 
 .tile:is([data-project=workito], [data-project=barbearia], [data-project=relatoriotec], [data-project=pmoc], [data-project=crm], [data-project=epi])::after { content: "Ver por dentro"; }
@@ -248,18 +253,25 @@ section { scroll-margin-top: 72px; }
 
 /* --- Agenda (barbearia) --- */
 .mini-agenda { display: flex; flex-direction: column; gap: 12px; }
+.agenda-body { display: grid; grid-template-columns: minmax(0, 1fr) clamp(150px, 14vw, 210px); gap: 14px; align-items: start; }
+.agenda-side { display: grid; gap: 8px; }
+.agenda-side div { background: rgba(244, 246, 255, .07); border-radius: 10px; padding: 10px 12px; display: grid; gap: 2px; }
+.agenda-side span { font-size: .75rem; opacity: .65; }
+.agenda-side b { font-family: var(--display); font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.15; }
+.agenda-side div:nth-child(2) b { color: var(--girassol); }
+.agenda-side div:nth-child(3) b { font-size: 1rem; }
 .agenda-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: .9rem; }
 .agenda-top > span:first-child { font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
 .agenda-count { opacity: .75; }
 .agenda-count b { color: var(--girassol); font-variant-numeric: tabular-nums; }
 .agenda {
-  display: grid; grid-template-columns: 52px repeat(3, 1fr);
+  display: grid; grid-template-columns: 44px repeat(4, minmax(0, 1fr));
   gap: 6px; font-size: .78rem;
 }
 .agenda .h { opacity: .55; display: flex; align-items: center; font-variant-numeric: tabular-nums; }
 .agenda .who { font-weight: 600; opacity: .8; padding-bottom: 2px; }
 .slot {
-  position: relative; height: 34px; border-radius: 8px;
+  position: relative; height: 30px; border-radius: 7px;
   background: rgba(244, 246, 255, .06);
   border: 1px dashed rgba(244, 246, 255, .18);
   overflow: hidden;
@@ -418,13 +430,14 @@ section { scroll-margin-top: 72px; }
 .chart-top > span:first-child { opacity: .7; width: 100%; }
 .chart-top b { font-family: var(--display); font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .chart-top em { font-style: normal; font-weight: 700; color: var(--tinta); background: var(--menta); padding: 2px 10px; border-radius: 999px; font-size: .85rem; }
-.chart { width: 100%; height: auto; margin-top: auto; overflow: visible; }
-.chart-area { fill: rgba(46, 230, 168, .14); animation: area 8s ease infinite; }
+.chart-wrap { position: relative; height: clamp(150px, 16vw, 230px); animation: revela 8s var(--ease-out) infinite; }
+@keyframes revela { 0% { clip-path: inset(0 100% 0 0); } 35%, 92% { clip-path: inset(0 0 0 0); opacity: 1; } 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+.chart { width: 100%; height: 100%; overflow: visible; }
+.chart-area { fill: rgba(46, 230, 168, .16); }
 .chart-line {
-  fill: none; stroke: var(--menta); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round;
-  stroke-dasharray: 1; stroke-dashoffset: 1; animation: linha 8s var(--ease-out) infinite;
+  fill: none; stroke: var(--menta); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke;
 }
-.chart-forecast { fill: none; stroke: var(--girassol); stroke-width: 3; stroke-dasharray: 6 6; stroke-linecap: round; animation: area 8s ease infinite; }
+.chart-forecast { fill: none; stroke: var(--girassol); stroke-width: 3; stroke-dasharray: 6 6; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 @keyframes linha { 0% { stroke-dashoffset: 1; opacity: 1; } 40%, 90% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
 @keyframes area { 0%, 30% { opacity: 0; } 45%, 90% { opacity: 1; } 100% { opacity: 0; } }
 
@@ -452,8 +465,6 @@ section { scroll-margin-top: 72px; }
   background: var(--tinta); color: var(--papel);
   padding: clamp(72px, 10vw, 140px) var(--gutter);
 }
-.process > * { max-width: 1280px; margin-left: auto; margin-right: auto; }
-.process .section-head { margin-left: max(0px, calc((100% - 1280px) / 2)); }
 .steps {
   position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 40px);
   padding-top: 56px;
@@ -478,7 +489,7 @@ section { scroll-margin-top: 72px; }
 .step p { opacity: .75; font-size: 1rem; max-width: 34ch; }
 
 /* ---------- Ferramentas ---------- */
-.tools { padding: clamp(72px, 10vw, 140px) var(--gutter); max-width: 1440px; margin: 0 auto; }
+.tools { padding: clamp(72px, 9vw, 130px) var(--gutter); }
 .tool-groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 40px); }
 .tool-group { border-top: 6px solid var(--c); padding-top: 18px; }
 .tool-group h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 14px; color: var(--c); }
@@ -489,7 +500,7 @@ section { scroll-margin-top: 72px; }
   background: var(--girassol); color: var(--tinta);
   padding: clamp(80px, 12vw, 160px) var(--gutter);
 }
-.contact > * { max-width: 1100px; }
+.contact h2 { max-width: 20ch; }
 .contact h2 {
   font-size: clamp(2.6rem, 7.4vw, 6.4rem); font-weight: 800; letter-spacing: -0.035em;
   font-variation-settings: "wdth" 78, "opsz" 96;
@@ -542,19 +553,26 @@ section { scroll-margin-top: 72px; }
 .detail-links .privado { font-size: .95rem; opacity: .7; }
 
 /* ---------- Responsivo ---------- */
+@media (max-width: 1280px) {
+  .tile-barber { grid-column: span 12; }
+  .tile-report, .tile-pmoc { grid-column: span 6; }
+}
 @media (max-width: 1080px) {
-  .grid { grid-template-columns: repeat(4, 1fr); }
-  .tile-workito { grid-template-columns: 1fr; }
-  .span-4 { grid-column: span 4; }
-.span-6 { grid-column: 1 / -1; }
-  .span-3 { grid-column: span 2; }
-  .tile-report { grid-column: span 2; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile-workito, .tile-barber { grid-column: 1 / -1; grid-template-columns: 1fr; }
+  .tile-report, .tile-pmoc, .tile-crm, .tile-epi, .tile-watch, .tile-albion { grid-column: span 1; }
+  .tile-albion { display: flex; flex-direction: column; align-items: stretch; }
+  .tile-albion .tile-text { order: 0; }
+  .tile-albion .mini { margin-bottom: 18px; }
   .tool-groups { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
   .grid { grid-template-columns: 1fr; }
-  .span-2, .span-3, .span-4, .span-6, .tile-report { grid-column: auto; }
-  .tile, .tile-barber, .tile-report { min-height: 0; }
+  .grid > .tile { grid-column: auto; }
+  .tile { min-height: 0; }
+  .agenda-body { grid-template-columns: 1fr; }
+  .agenda-side { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .agenda-side b { font-size: 1.05rem; }
   .steps { grid-template-columns: 1fr; padding-top: 0; padding-left: 60px; gap: 32px; }
   .steps-track { left: 18px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }
   .steps-fill { transform-origin: top; transform: scaleY(var(--p, 0)); }
@@ -563,7 +581,7 @@ section { scroll-margin-top: 72px; }
   .topbar nav a:nth-child(2) { display: none; }
   .hero-name { font-size: 26vw; }
   .hero { padding-bottom: 40px; }
-  .agenda { grid-template-columns: 42px repeat(3, 1fr); }
+  .agenda { grid-template-columns: 38px repeat(4, minmax(0, 1fr)); gap: 4px; }
 }
 @media (max-width: 420px) {
   .tool-groups { grid-template-columns: 1fr; }
@@ -582,6 +600,5 @@ section { scroll-margin-top: 72px; }
   .kb-card { animation: none !important; }
   .workito-badge i { animation: none !important; }
   .bar i { animation: none !important; }
-  .chart-line { animation: none !important; stroke-dashoffset: 0; }
-  .chart-area, .chart-forecast { animation: none !important; opacity: 1; }
+  .chart-wrap { animation: none !important; }
 }

@@ -158,13 +158,13 @@
   const agenda = document.getElementById("agenda");
   const contador = document.getElementById("agenda-count");
   const aviso = document.getElementById("agenda-toast");
-  const barbeiros = ["Rafa", "Léo", "Davi"];
-  const horas = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00"];
-  const clientes = ["Bruno", "Caio", "Diego", "Enzo", "Felipe", "Gui", "Hugo", "Igor", "João", "Kauã", "Lucas", "Mateus", "Nico", "Otávio", "Pedro", "Rui", "Samuel", "Theo"];
+  const barbeiros = ["Rafa", "Léo", "Davi", "Caio"];
+  const horas = ["09:00", "10:00", "11:00", "14:00", "15:00"];
+  const clientes = ["Bruno", "André", "Diego", "Enzo", "Felipe", "Gui", "Hugo", "Igor", "João", "Kauã", "Lucas", "Mateus", "Nico", "Otávio", "Pedro", "Rui", "Samuel", "Theo"];
   const servicos = [
-    { nome: "Corte", cor: "var(--girassol)" },
-    { nome: "Barba", cor: "var(--menta)" },
-    { nome: "Corte + barba", cor: "var(--coral)" },
+    { nome: "Corte", cor: "var(--girassol)", preco: 40 },
+    { nome: "Barba", cor: "var(--menta)", preco: 30 },
+    { nome: "Corte + barba", cor: "var(--coral)", preco: 65 },
   ];
   const slots = [];
   agenda.appendChild(document.createElement("span"));
@@ -188,6 +188,7 @@
     const usados = new Set(slots.filter((s) => s.ocupado).map((s) => s.cliente));
     const cliente = sorteia(clientes.filter((c) => !usados.has(c)));
     slot.cliente = cliente;
+    slot.preco = sv.preco;
     chip.textContent = cliente;
     slot.el.appendChild(chip);
     slot.ocupado = true;
@@ -199,7 +200,19 @@
       clearTimeout(marcar.t);
       marcar.t = setTimeout(() => aviso.classList.remove("show"), 1700);
     }
-    contador.textContent = slots.filter((s) => s.ocupado).length;
+    atualizarResumo();
+  }
+  const resumoClientes = document.getElementById("agenda-clientes");
+  const resumoFat = document.getElementById("agenda-fat");
+  const resumoProx = document.getElementById("agenda-prox");
+  const fmtReal = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  function atualizarResumo() {
+    const ocupados = slots.filter((s) => s.ocupado);
+    contador.textContent = ocupados.length;
+    resumoClientes.textContent = ocupados.length;
+    resumoFat.textContent = fmtReal.format(ocupados.reduce((t, s) => t + (s.preco || 0), 0));
+    const prox = ocupados[0];
+    resumoProx.textContent = prox ? `${prox.hora} ${prox.barbeiro}` : "Livre";
   }
   function limparAgenda() {
     slots.forEach((s) => {
@@ -208,9 +221,10 @@
       if (c) { c.classList.add("saindo"); setTimeout(() => c.remove(), 300); }
       s.ocupado = false;
     });
+    atualizarResumo();
   }
   function semear() {
-    const iniciais = [...slots].sort(() => Math.random() - 0.5).slice(0, 7);
+    const iniciais = [...slots].sort(() => Math.random() - 0.5).slice(0, 9);
     iniciais.forEach((s) => marcar(s, false));
   }
   semear();
@@ -218,7 +232,7 @@
   let timerAgenda = null;
   function cicloAgenda() {
     const livres = slots.filter((s) => !s.ocupado);
-    if (livres.length <= 2) {
+    if (livres.length <= 3) {
       limparAgenda();
       setTimeout(semear, 450);
     } else {
