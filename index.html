@@ -49,21 +49,57 @@
     <section class="hero" id="inicio">
       <canvas class="hero-canvas" id="pixels" aria-hidden="true"></canvas>
       <div class="hero-inner">
-        <p class="hero-role">Desenvolvedor de sistemas web, do protótipo ao deploy</p>
+        <p class="hero-role">
+          <span class="sr-only">Desenvolvedor de sistemas web: CRM, dashboards, agendas, relatórios e firmware.</span>
+          <span aria-hidden="true">Desenvolvedor de sistemas web ·
+            <span class="rotator" id="rotator"><span class="is-on">CRM e funil de vendas</span><span>dashboards com dados reais</span><span>agenda online</span><span>relatório com assinatura</span><span>firmware para ESP32</span></span>
+          </span>
+        </p>
         <h1 class="hero-name" id="hero-name" aria-label="Lorran Rodrigues">
           <span class="line" data-split>Lorran</span>
           <span class="line" data-split>Rodrigues</span>
         </h1>
-        <p class="hero-lead">
-          Eu transformo papel, planilha e grupo de WhatsApp em sistema: agenda de barbearia,
-          relatório técnico com assinatura, estoque de EPI, CRM de escola e até firmware de relógio.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-sun" href="#projetos">Ver projetos</a>
-          <a class="btn btn-ghost" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Abrir meu GitHub</a>
+        <div class="hero-low">
+          <div class="hero-copy">
+            <p class="hero-lead">
+              Eu transformo papel, planilha e grupo de WhatsApp em sistema: agenda de barbearia,
+              relatório técnico com assinatura, estoque de EPI e, agora, um <b>CRM completo</b> para equipes de vendas.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-sun" href="#projetos">Ver projetos</a>
+              <a class="btn btn-ghost" href="https://github.com/LorranBRS" target="_blank" rel="noopener">Abrir meu GitHub</a>
+            </div>
+          </div>
+
+          <!-- Destaque: Workito -->
+          <a class="spot" href="#workito" aria-label="Workito, o CRM que estou construindo. Ver o projeto.">
+            <div class="spot-top">
+              <span class="spot-chip"><i aria-hidden="true"></i>Em destaque</span>
+              <span class="spot-fase">MVP · 5 de 7 fases</span>
+            </div>
+            <p class="spot-title">Workito <small>CRM SaaS que estou construindo</small></p>
+            <div class="spot-funil" aria-hidden="true">
+              <div class="spot-col"><span>Lead</span><i></i><i></i></div>
+              <div class="spot-col"><span>Proposta</span><i></i></div>
+              <div class="spot-col"><span>Ganho</span><i></i></div>
+              <b class="spot-card">R$ 12.400</b>
+            </div>
+            <ul class="spot-mods" id="spot-mods" aria-hidden="true">
+              <li>Funil de vendas</li><li>Leads</li><li>Comunicação</li><li>Propostas</li><li>Atividades</li>
+              <li>Dashboard</li><li>Planilhas</li><li class="breve">Análise de documentos</li><li class="breve">Análise de feedback</li>
+            </ul>
+            <div class="spot-barra" aria-hidden="true"><i></i></div>
+            <span class="spot-ver">Ver por dentro <span aria-hidden="true">→</span></span>
+          </a>
         </div>
       </div>
       <p class="hero-hint" aria-hidden="true">Passe o mouse no nome</p>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Funil de vendas</span><span>Leads</span><span>Comunicação</span><span>Propostas</span><span>Atividades</span><span>Dashboard</span><span>Planilhas</span><span>Análise de documentos</span><span>Análise de feedback</span>
+          <span>Funil de vendas</span><span>Leads</span><span>Comunicação</span><span>Propostas</span><span>Atividades</span><span>Dashboard</span><span>Planilhas</span><span>Análise de documentos</span><span>Análise de feedback</span>
+        </div>
+      </div>
     </section>
 
     <!-- PROJETOS -->
@@ -75,16 +111,22 @@
 
       <div class="grid">
         <!-- Workito: projeto principal -->
-        <article class="tile tile-workito" data-project="workito">
+        <article class="tile tile-workito" id="workito" data-project="workito">
           <div class="workito-text">
             <p class="workito-badge"><i aria-hidden="true"></i>Em desenvolvimento, 5 de 7 fases prontas</p>
             <h3>Workito</h3>
             <p class="workito-lead">CRM SaaS para equipes comerciais. Cada empresa tem seus dados isolados, cinco perfis de acesso e o caminho completo do lead até a proposta aprovada.</p>
-            <ul class="workito-feats">
-              <li>Funil de vendas com arrastar e soltar</li>
-              <li>Dashboard com metas e gráficos dos dados reais</li>
-              <li>Propostas com PDF e limite de desconto</li>
-              <li>14 relatórios em CSV, Excel e PDF</li>
+            <p class="workito-mvp-t">O que vem no MVP</p>
+            <ul class="workito-mvp">
+              <li><b>Funil de vendas</b><span>Kanban com arrastar e soltar e motivo de perda</span></li>
+              <li><b>Leads</b><span>Duplicados detectados, rodízio e conversão</span></li>
+              <li><b>Comunicação</b><span>Histórico de contato por canal</span></li>
+              <li><b>Propostas</b><span>Itens, desconto controlado e PDF</span></li>
+              <li><b>Atividades</b><span>Lista, calendário e alerta de atraso</span></li>
+              <li><b>Dashboard</b><span>10 indicadores, 7 gráficos e metas</span></li>
+              <li><b>Planilhas</b><span>Importa CSV, exporta CSV, Excel e PDF</span></li>
+              <li class="breve"><b>Análise de documentos</b><span>Leitura de contratos e propostas recebidas</span></li>
+              <li class="breve"><b>Análise de feedback</b><span>O que os clientes elogiam e reclamam</span></li>
             </ul>
             <ul class="workito-stack" aria-label="Tecnologias">
               <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li>

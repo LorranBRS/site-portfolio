@@ -105,14 +105,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero {
   position: relative; isolation: isolate;
   min-height: 100svh;
-  display: flex; align-items: flex-end;
-  padding: 120px var(--gutter) clamp(48px, 8vh, 96px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 110px var(--gutter) 0;
   background: var(--cobalto-fundo);
   color: var(--papel);
   overflow: hidden;
 }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
-.hero-inner { width: 100%; }
+.hero-inner { width: 100%; padding-bottom: clamp(36px, 6vh, 72px); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .hero-role { font-size: clamp(1rem, 1.6vw, 1.2rem); font-weight: 500; opacity: .85; margin-bottom: 12px; }
 .hero-name {
   font-size: clamp(3.6rem, 15.5vw, 14.5rem);
@@ -136,12 +137,128 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   to   { opacity: 1; transform: none; }
 }
 .hero-lead { max-width: 58ch; font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.55; margin-bottom: 28px; }
+.hero-lead b { color: var(--girassol); font-weight: 700; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-hint {
-  position: absolute; right: var(--gutter); bottom: clamp(48px, 8vh, 96px);
+  position: absolute; right: var(--gutter); top: 120px;
   font-size: .9rem; opacity: .7; writing-mode: vertical-rl; transform: rotate(180deg);
 }
-@media (hover: none), (max-width: 900px) { .hero-hint { display: none; } }
+.hero-hint { display: none; } /* o cartão do Workito ocupa a lateral direita */
+
+
+/* Palavra que troca na linha de cima */
+.rotator { display: inline-grid; vertical-align: bottom; overflow: hidden; font-weight: 700; color: var(--girassol); }
+.rotator > span {
+  grid-area: 1 / 1; white-space: nowrap;
+  opacity: 0; transform: translateY(70%);
+  transition: opacity .45s var(--ease-out), transform .45s var(--ease-out);
+}
+.rotator > span.is-on { opacity: 1; transform: none; }
+.rotator > span.is-out { opacity: 0; transform: translateY(-70%); }
+
+/* Entrada do texto depois do nome */
+.hero-role, .hero-copy { animation: entrar .9s var(--ease-out) both; }
+.spot { animation: entrar .9s var(--ease-out) both, borda 6s linear infinite; }
+.hero-role { animation-delay: .05s; }
+.hero-copy { animation-delay: .75s; }
+.spot { animation-delay: 1s, 0s; }
+@keyframes entrar { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Linha de baixo: texto + destaque do Workito */
+/* Desktop: nome e texto à esquerda, Workito na lateral direita */
+.hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) clamp(380px, 30vw, 580px); column-gap: clamp(24px, 4vw, 72px); align-items: end; }
+.hero-inner > *, .hero-copy { grid-column: 1; }
+.hero-low { display: contents; }
+.spot { grid-column: 2; grid-row: 1 / span 3; align-self: end; }
+.hero-name { font-size: clamp(3.6rem, 12.4vw, 14.5rem); }
+
+.spot {
+  position: relative; display: grid; gap: 14px;
+  padding: 20px; border-radius: var(--raio-g); border: 2px solid transparent;
+  background:
+    linear-gradient(#0B3B40, #0B3B40) padding-box,
+    conic-gradient(from var(--ang), var(--menta), var(--girassol), var(--coral), var(--menta)) border-box;
+  color: var(--papel); text-decoration: none;
+  box-shadow: 0 24px 60px rgba(11, 18, 64, .35);
+  transition: transform .3s var(--ease-out), box-shadow .3s ease;
+}
+@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes borda { to { --ang: 360deg; } }
+@media (hover: hover) { .spot:hover { transform: translateY(-4px) rotate(-.4deg); } .spot:hover .spot-ver span { transform: translateX(4px); } }
+.spot-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .78rem; font-weight: 700; }
+.spot-chip { display: inline-flex; align-items: center; gap: 7px; background: var(--menta); color: var(--tinta); padding: 3px 10px; border-radius: 99px; text-transform: uppercase; letter-spacing: .08em; }
+.spot-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--tinta); animation: pulso 1.6s ease-in-out infinite; }
+.spot-fase { opacity: .75; }
+.spot-title { font-family: var(--display); font-size: clamp(2rem, 2.4vw, 2.8rem); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+.spot-title small { display: block; font-family: var(--texto); font-size: .9rem; font-weight: 500; letter-spacing: 0; opacity: .75; margin-top: 6px; }
+
+/* Mini funil: um cartão anda de Lead até Ganho */
+.spot-funil { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.spot-col { display: grid; gap: 6px; align-content: start; min-height: clamp(92px, 7vw, 120px); padding: 8px; border-radius: 10px; background: rgba(244, 246, 255, .07); }
+.spot-col span { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .7; }
+.spot-col i { height: 18px; border-radius: 5px; background: rgba(244, 246, 255, .14); }
+.spot-card {
+  position: absolute; left: 0; top: 30px; width: calc((100% - 16px) / 3); padding: 0 8px;
+  font-size: .72rem; line-height: 26px; border-radius: 6px; text-align: center;
+  background: var(--girassol); color: var(--tinta);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .3);
+  animation: andar 6s var(--ease-in-out) infinite;
+}
+@keyframes andar {
+  0%, 18%   { transform: translate(0, 0); background: var(--girassol); opacity: 1; }
+  30%       { transform: translate(calc(50% + 4px), -10px) rotate(-3deg); }
+  40%, 58%  { transform: translate(calc(100% + 8px), 0); background: var(--girassol); }
+  70%       { transform: translate(calc(150% + 12px), -10px) rotate(3deg); }
+  80%, 96%  { transform: translate(calc(200% + 16px), 0); background: var(--menta); opacity: 1; }
+  100%      { transform: translate(calc(200% + 16px), 0); opacity: 0; }
+}
+
+/* Módulos do MVP acendendo um por um */
+.spot-mods { display: flex; flex-wrap: wrap; gap: 6px; }
+.spot-mods li {
+  font-size: clamp(.76rem, .75vw, .88rem); font-weight: 600; padding: 3px 9px; border-radius: 99px;
+  border: 1px solid rgba(244, 246, 255, .22);
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, transform .3s var(--ease-out);
+}
+.spot-mods li.breve { border-style: dashed; opacity: .8; }
+.spot-mods li.is-on { background: var(--menta); color: var(--tinta); border-color: var(--menta); transform: translateY(-2px); opacity: 1; }
+.spot-mods li.breve.is-on { background: var(--girassol); border-color: var(--girassol); }
+.spot-barra { height: 6px; border-radius: 6px; background: rgba(244, 246, 255, .14); overflow: hidden; }
+.spot-barra i { display: block; height: 100%; width: calc(5 / 7 * 100%); border-radius: inherit; background: linear-gradient(90deg, var(--menta), var(--girassol)); transform-origin: left; animation: encher 1.6s var(--ease-out) 1.3s both; }
+@keyframes encher { from { transform: scaleX(0); } }
+.spot-ver { font-weight: 700; font-size: .95rem; color: var(--girassol); }
+.spot-ver span { display: inline-block; transition: transform .2s var(--ease-out); }
+
+/* Faixa rolando no pé do herói */
+.marquee {
+  margin: 0 calc(-1 * var(--gutter)); overflow: hidden;
+  background: var(--girassol); color: var(--tinta);
+  border-top: 3px solid var(--tinta);
+}
+.marquee-track { display: flex; width: max-content; animation: rolar 38s linear infinite; }
+.marquee-track span {
+  font-family: var(--display); font-weight: 800; font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-variation-settings: "wdth" 85, "opsz" 48; padding: 12px 0; white-space: nowrap;
+}
+.marquee-track span::after { content: ""; display: inline-block; width: .45em; height: .45em; margin: 0 .9em; border-radius: 3px; background: var(--cobalto); vertical-align: middle; transform: rotate(45deg); }
+.marquee-track span:nth-child(3n+2)::after { background: var(--coral); }
+.marquee-track span:nth-child(3n)::after { background: var(--menta-escura); }
+@keyframes rolar { to { transform: translateX(-50%); } }
+
+/* Workito: lista do MVP no quadro */
+.workito-mvp-t { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--menta); margin-bottom: 10px; }
+.workito-mvp { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-bottom: 20px; }
+.workito-mvp li {
+  position: relative; display: grid; gap: 2px; padding: 10px 12px 10px 30px; border-radius: 12px;
+  background: rgba(244, 246, 255, .07); border: 1px solid rgba(244, 246, 255, .12);
+}
+.workito-mvp li::before { content: ""; position: absolute; left: 12px; top: 15px; width: 9px; height: 9px; border-radius: 3px; background: var(--menta); }
+.workito-mvp b { font-size: .95rem; }
+.workito-mvp span { font-size: .8rem; opacity: .72; line-height: 1.35; }
+.workito-mvp li.breve { border-style: dashed; background: transparent; }
+.workito-mvp li.breve::before { background: var(--girassol); }
+.workito-mvp li.breve b::after { content: "em breve"; display: inline-block; white-space: nowrap; margin-left: 8px; font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta); background: var(--girassol); padding: 1px 7px; border-radius: 99px; vertical-align: 2px; }
+.tile-workito.is-live .workito-mvp li { animation: entrar .6s var(--ease-out) both; animation-delay: calc(var(--k, 0) * 60ms); }
 
 /* ---------- Cabeçalho de seção ---------- */
 section { scroll-margin-top: 72px; }
@@ -636,6 +753,11 @@ section { scroll-margin-top: 72px; }
 .detail-links .privado { font-size: .95rem; opacity: .7; }
 
 /* ---------- Responsivo ---------- */
+@media (max-width: 1180px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .spot { grid-column: 1; grid-row: auto; max-width: 520px; margin-top: 32px; }
+  .hero-name { font-size: clamp(3.6rem, 15.5vw, 14.5rem); }
+}
 @media (max-width: 1280px) {
   .tile-barber { grid-column: span 12; }
   .tile-report, .tile-pmoc { grid-column: span 6; }
@@ -672,6 +794,13 @@ section { scroll-margin-top: 72px; }
   .hero { padding-bottom: 40px; }
   .agenda { grid-template-columns: 38px repeat(4, minmax(0, 1fr)); gap: 4px; }
 }
+@media (max-width: 520px) {
+  .workito-mvp { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .workito-mvp li { padding: 9px 10px 9px 26px; }
+  .workito-mvp li::before { left: 10px; top: 14px; }
+  .workito-mvp span { display: none; }
+  .workito-mvp li.breve b::after { display: block; width: max-content; margin: 4px 0 0; }
+}
 @media (max-width: 420px) {
   .tool-groups { grid-template-columns: 1fr; }
   .agenda .slot .chip { font-size: .7rem; padding: 0 5px; }
@@ -691,5 +820,7 @@ section { scroll-margin-top: 72px; }
   .bar i { animation: none !important; }
   .chart-wrap { animation: none !important; }
   .about-selo svg { animation: none !important; }
+  .marquee-track, .spot-card, .spot, .spot-chip i, .spot-barra i { animation: none !important; }
+  .spot-card { transform: translate(calc(100% + 8px), 0); }
   .about-numeros li { opacity: 1; transform: none; }
 }

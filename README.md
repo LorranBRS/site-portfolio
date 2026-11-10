@@ -4,7 +4,7 @@ Portfólio de sistemas web. Em vez de só listar projetos, cada um aparece como 
 **miniatura viva** do sistema funcionando: agenda de barbearia recebendo clientes, relatório técnico
 sendo assinado, checklist de PMOC, kanban de CRM, estoque de EPI, gráfico de mercado e um smartwatch com a hora real.
 
-O destaque é o **Workito**, um CRM SaaS multiempresa em Next.js e PostgreSQL. Ao clicar em um projeto,
+O destaque é o **Workito**, um CRM SaaS multiempresa em Next.js e PostgreSQL, que aparece logo no topo com um mini funil animado e os módulos do MVP (funil, leads, comunicação, propostas, atividades, dashboard, planilhas e, em breve, análise de documentos e de feedback). Ao clicar em um projeto,
 uma **gravação da tela real** mostra o sistema por dentro (WebP animado, leve como um GIF).
 
 **Site:** https://lorranbrs.github.io/site-portfolio/

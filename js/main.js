@@ -137,6 +137,28 @@
   if (!reduz) requestAnimationFrame(loopCanvas);
   new IntersectionObserver(([e]) => { heroiVisivel = e.isIntersecting; }).observe(heroi);
 
+  /* ---------- 1b. Topo: palavra que troca e módulos do Workito acendendo ---------- */
+  const palavras = [...document.querySelectorAll("#rotator > span")];
+  const modulos = [...document.querySelectorAll("#spot-mods li")];
+  document.querySelectorAll(".workito-mvp li").forEach((li, k) => li.style.setProperty("--k", k));
+  if (!reduz) {
+    let p = 0, m = -1;
+    setInterval(() => {
+      if (document.hidden || window.scrollY > window.innerHeight) return;
+      const atual = palavras[p];
+      atual.classList.remove("is-on"); atual.classList.add("is-out");
+      setTimeout(() => atual.classList.remove("is-out"), 460);
+      p = (p + 1) % palavras.length;
+      palavras[p].classList.add("is-on");
+    }, 2400);
+    setInterval(() => {
+      if (document.hidden || window.scrollY > window.innerHeight) return;
+      if (m >= 0) modulos[m].classList.remove("is-on");
+      m = (m + 1) % modulos.length;
+      modulos[m].classList.add("is-on");
+    }, 900);
+  }
+
   /* ---------- 3. Barra do topo fica sólida depois do herói ---------- */
   const topo = document.getElementById("topbar");
   const atualizarTopo = () => topo.classList.toggle("is-solid", window.scrollY > heroi.offsetHeight - 70);
@@ -331,7 +353,7 @@
     workito: {
       tipo: "CRM SaaS multiempresa, em desenvolvimento", cor: "var(--menta)", titulo: "Workito",
       problema: "Equipes comerciais perdem venda espalhando cliente, lead e proposta em planilha, WhatsApp e caderno, sem saber o que cada vendedor tem em aberto.",
-      recursos: ["Funil Kanban com arrastar e soltar, histórico de etapas e motivo de perda", "Leads com detecção de duplicados e conversão", "Propostas com desconto controlado, PDF e aprovação", "14 relatórios em CSV, Excel e PDF, com auditoria", "Dados de cada empresa isolados e cinco perfis de acesso"],
+      recursos: ["Funil de vendas Kanban com arrastar e soltar, histórico de etapas e motivo de perda", "Leads com detecção de duplicados, rodízio e conversão", "Comunicação: histórico de contato com o cliente por canal", "Propostas com desconto controlado, PDF e aprovação", "Atividades em lista e calendário, com alerta de atraso", "Dashboard com 10 indicadores, 7 gráficos e metas", "Planilhas: importa CSV e exporta CSV, Excel e PDF em 14 relatórios", "Em breve: análise de documentos e análise de feedback dos clientes", "Dados de cada empresa isolados e cinco perfis de acesso"],
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind", "shadcn/ui", "PostgreSQL", "Prisma", "Better Auth", "Vitest", "Docker"],
       previa: "workito", url: "workito / dashboard",
       demo: null, aviso: "Projeto privado, ainda em desenvolvimento. Posso mostrar ao vivo numa conversa.",
