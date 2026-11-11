@@ -329,7 +329,7 @@
   function contar(el) {
     const alvo = Number(el.dataset.conta);
     if (reduz || alvo === 0) { el.textContent = alvo; return; }
-    const ini = performance.now(), dur = 1100 + alvo * 60;
+    const ini = performance.now(), dur = 1400 + Math.min(alvo, 100) * 8;
     (function passo(t) {
       const k = Math.min(1, (t - ini) / dur);
       el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3)));
