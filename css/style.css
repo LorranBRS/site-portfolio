@@ -647,8 +647,8 @@ section { scroll-margin-top: 72px; }
 }
 .about-numeros li:nth-child(2) { transition-delay: .08s; }
 .about-numeros li:nth-child(3) { transition-delay: .16s; }
-.about-numeros li:nth-child(4) { transition-delay: .24s; }
 .about-numeros.is-live li { opacity: 1; transform: none; }
+.about-numeros li:first-child { grid-column: 1 / -1; }
 .about-numeros b {
   font-family: var(--display); font-weight: 800; line-height: 1;
   font-size: clamp(3rem, 5.4vw, 5rem); font-variation-settings: "wdth" 80, "opsz" 96;
@@ -656,7 +656,6 @@ section { scroll-margin-top: 72px; }
 }
 .about-numeros li:nth-child(2) b { color: var(--menta-escura); }
 .about-numeros li:nth-child(3) b { color: var(--coral); }
-.about-numeros li:nth-child(4) b { color: var(--tinta); }
 .about-numeros span { font-weight: 600; font-size: .98rem; line-height: 1.35; }
 
 /* ---------- Processo ---------- */
@@ -771,10 +770,12 @@ section { scroll-margin-top: 72px; }
   .tile-albion .mini { margin-bottom: 18px; }
   .tool-groups { grid-template-columns: repeat(2, 1fr); }
   .about-text, .about-numeros { grid-column: 1 / -1; }
-  .about-numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .about-numeros { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-numeros li:first-child { grid-column: auto; }
 }
 @media (max-width: 760px) {
   .about-numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-numeros li:first-child { grid-column: 1 / -1; }
   .about-head { grid-template-columns: 1fr; }
   .about-selo { position: absolute; right: -28px; top: 28px; width: 104px; opacity: .9; }
   .about-kicker { padding-right: 90px; }
