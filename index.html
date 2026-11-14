@@ -116,18 +116,7 @@
             <p class="workito-badge"><i aria-hidden="true"></i>Em desenvolvimento, 5 de 7 fases prontas</p>
             <h3>Workito</h3>
             <p class="workito-lead">CRM SaaS para equipes comerciais. Cada empresa tem seus dados isolados, cinco perfis de acesso e o caminho completo do lead até a proposta aprovada.</p>
-            <p class="workito-mvp-t">O que vem no MVP</p>
-            <ul class="workito-mvp">
-              <li><b>Funil de vendas</b><span>Kanban com arrastar e soltar e motivo de perda</span></li>
-              <li><b>Leads</b><span>Duplicados detectados, rodízio e conversão</span></li>
-              <li><b>Comunicação</b><span>Histórico de contato por canal</span></li>
-              <li><b>Propostas</b><span>Itens, desconto controlado e PDF</span></li>
-              <li><b>Atividades</b><span>Lista, calendário e alerta de atraso</span></li>
-              <li><b>Dashboard</b><span>10 indicadores, 7 gráficos e metas</span></li>
-              <li><b>Planilhas</b><span>Importa CSV, exporta CSV, Excel e PDF</span></li>
-              <li class="breve"><b>Análise de documentos</b><span>Leitura de contratos e propostas recebidas</span></li>
-              <li class="breve"><b>Análise de feedback</b><span>O que os clientes elogiam e reclamam</span></li>
-            </ul>
+            <div class="workito-fases" role="img" aria-label="5 de 7 fases prontas"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i></i><i></i><span>5 de 7 fases</span></div>
             <ul class="workito-stack" aria-label="Tecnologias">
               <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li>
             </ul>
@@ -140,6 +129,20 @@
                    alt="Gravação do Workito: dashboard com indicadores, cartão arrastado no funil de vendas, lista de clientes, propostas e relatórios.">
             </picture>
           </figure>
+          <div class="workito-mods">
+            <p class="workito-mvp-t">O que vem no MVP</p>
+            <ul class="workito-mvp">
+              <li><b>Funil de vendas</b><span>Kanban com arrastar e soltar e motivo de perda</span></li>
+              <li><b>Leads</b><span>Duplicados detectados, rodízio e conversão</span></li>
+              <li><b>Comunicação</b><span>Histórico de contato por canal</span></li>
+              <li><b>Propostas</b><span>Itens, desconto controlado e PDF</span></li>
+              <li><b>Atividades</b><span>Lista, calendário e alerta de atraso</span></li>
+              <li><b>Dashboard</b><span>10 indicadores, 7 gráficos e metas</span></li>
+              <li><b>Planilhas</b><span>Importa CSV, exporta CSV, Excel e PDF</span></li>
+              <li class="breve"><b>Análise de documentos</b><span>Leitura de contratos e propostas recebidas</span></li>
+              <li class="breve"><b>Análise de feedback</b><span>O que os clientes elogiam e reclamam</span></li>
+            </ul>
+          </div>
           <button class="tile-open" type="button" aria-label="Ver detalhes do Workito"></button>
         </article>
 
@@ -292,7 +295,7 @@
         <div class="about-selo" aria-hidden="true">
           <svg viewBox="0 0 120 120">
             <defs><path id="selo-circulo" d="M60 60 m-46 0 a46 46 0 1 1 92 0 a46 46 0 1 1 -92 0"/></defs>
-            <text><textPath href="#selo-circulo" textLength="285" lengthAdjust="spacing">sistemas web · hardware · feito à mão ·</textPath></text>
+            <text><textPath href="#selo-circulo" textLength="285" lengthAdjust="spacing">sistemas web · hardware · firmware ·</textPath></text>
           </svg>
           <span class="about-selo-centro"><i></i><i></i></span>
         </div>
@@ -370,6 +373,7 @@
 
     <!-- CONTATO -->
     <section class="contact" id="contato" aria-labelledby="contact-title">
+      <div class="contact-main">
       <h2 id="contact-title">Seu processo ainda vive no papel? Vamos virar sistema.</h2>
       <p>Me chama e conta o problema. Respondo com uma ideia de como resolver.</p>
       <div class="contact-actions">
@@ -377,6 +381,15 @@
         <!-- LinkedIn: trocar o href pelo link do perfil e apagar o atributo hidden -->
         <a class="btn btn-ink-ghost" id="contato-linkedin" href="#" target="_blank" rel="noopener" hidden>Conectar no LinkedIn</a>
       </div>
+      </div>
+      <aside class="contact-card" aria-label="O que acontece depois">
+        <p class="contact-card-t">O que acontece depois</p>
+        <ol>
+          <li><b>1</b><span>Você me conta como o trabalho é feito hoje.</span></li>
+          <li><b>2</b><span>Eu respondo com uma ideia de como resolver.</span></li>
+          <li><b>3</b><span>Se fizer sentido, você recebe um protótipo para clicar.</span></li>
+        </ol>
+      </aside>
     </section>
   </main>
 
